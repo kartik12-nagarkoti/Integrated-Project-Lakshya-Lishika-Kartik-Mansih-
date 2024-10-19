@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Profiles</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <style>
+        /* Header styles */
+        header {
+            background-color: #016d6d; /* Teal background for header */
+            color: white; /* White text color */
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center text horizontally */
+            height: 120px; /* Set height for the header */
+            padding: 10px 0; /* Add padding for better spacing */
+        }
+
+        header h1 {
+            margin-top: 45px;
+        }
+
+        /* Centering button container */
+        .button-container {
+            display: flex; /* Use flexbox to center the button */
+            justify-content: center; /* Center the button */
+            margin-top: 10px; /* Space between the header text and the button */
+        }
+
+        .back-button {
+            background-color: #016d6d; /* Teal background */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px; /* Rounded corners */
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #016d6d; /* Teal on hover */
+        }
+
+        /* Styles for the volunteer cards */
+        .volunteer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center the volunteer cards */
+            margin-top: 20px; /* Spacing above the cards */
+        }
+
+        .volunteer-card {
+            background: #f0f8ff; /* White background for cards */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 15px;
+            padding: 20px;
+            text-align: center;
+            width: 250px; /* Fixed width for cards */
+            transition: transform 0.3s; /* Smooth transition for hover effect */
+        }
+
+        .volunteer-card:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+        }
+
+        .volunteer-card img {
+            width: 100px; /* Adjust image size */
+            height: 100px; /* Make it square */
+            border-radius: 50%; /* Circular shape */
+            border: 3px solid #016d6d; /* Teal border */
+            margin-bottom: 15px;
+        }
+
+        /* Styles for the star rating */
+        .star-rating {
+            margin: 10px 0;
+        }
+
+        .star {
+            color: #016d6d; /* Teal color for stars */
+            font-size: 20px; /* Size of stars */
+        }
+
+        /* New styles for volunteer name with hover effect */
+        .volunteer-name {
+            font-weight: bold;
+            color: #333; /* Dark gray for the text */
+            transition: color 0.3s, transform 0.3s; /* Smooth transition */
+        }
+
+        .volunteer-name:hover {
+            color: #005252; /* Change color on hover */
+            transform: scale(1.1); /* Slightly enlarge the text */
+        }
+
+        /* Styles for the connect button */
+        .connect-button {
+            background-color: #016d6d; /* Teal background */
+            border: none; /* No border */
+            padding: 10px 15px; /* Padding */
+            color: white; /* White text color */
+            cursor: pointer; /* Pointer cursor on hover */
+            font-size: 16px; /* Font size */
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+        }
+
+        .connect-button:hover {
+            background-color: #014d4d; /* Darker teal on hover */
+            transform: scale(1.05); /* Slightly enlarge the button */
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #016d6d; /* Match header color */
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Styles for popup */
+        .popup {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed position */
+            left: 50%; /* Center horizontally */
+            top: 50%; /* Center vertically */
+            transform: translate(-50%, -50%); /* Offset to center */
+            background-color: white; /* White background */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Shadow */
+            padding: 20px; /* Padding inside the popup */
+            z-index: 1000; /* Make sure it appears on top */
+            text-align: center; /* Center text */
+        }
+
+        .popup h3 {
+            margin: 0; /* No margin */
+        }
+
+        .popup button {
+            margin-top: 10px; /* Space above the close button */
+            background-color: #016d6d; /* Teal background */
+            color: white; /* White text */
+            border: none; /* No border */
+            padding: 10px 15px; /* Padding */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer cursor */
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+
+        .popup button:hover {
+            background-color: #014d4d; /* Darker teal on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Volunteer Profiles</h1>
+    </header>
+
+    <main>
+        <div class="button-container">
+            <button id="backButton" class="back-button" onclick="window.history.back()">Back</button>
+        </div>
+
+        <section class="volunteer-list">
+            <h2 style="text-align:center">Our Volunteers</h2>
+            <div class="volunteer-container" id="volunteerContainer">
+                <!-- Volunteer Profile Cards will be injected here -->
+            </div>
+        </section>
+
+        <!-- Popup for connection request -->
+        <div class="popup" id="popup">
+            <h3>Connection Request Sent!</h3>
+            <p>Your connection request has been sent to the volunteer.</p>
+            <button onclick="closePopup()">Close</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 NGO & Volunteer Network</p>
+    </footer>
+
+    <script>
+        // Sample volunteer data with Indian names and gender included
+        const volunteers = [
+            { name: "Manish Chauhan", gender: "Male", age: 22, skills: ["Teaching", "Project Management", "Fundraising"], photo: "volunteer1.jpeg", rating: 5 },
+            { name: "Kartik Nagarkoti", gender: "Male", age: 20, skills: ["Design", "Communication"], photo: "volunteer2.jpeg", rating: 5 },
+            { name: "Lishika Goel", gender: "Female", age: 23, skills: ["Teaching", "Mentoring"], photo: "volunteer3.jpeg", rating: 5 },
+            { name: "Lakshya Sharma", gender: "Male", age: 22, skills: ["Social Media", "Marketing"], photo: "volunteer4.jpeg", rating: 5 },
+            { name: "Saikat Paramanik", gender: "Male", age: 23, skills: ["Research", "Writing"], photo: "volunteer5.enc", rating: 5 },
+            { name: "Divyanshi verma", gender: "Female", age: 21, skills: ["Research", "Writing"], photo: "volunteer6.jpeg", rating: 5 },
+            { name: "Ajay Kumar", gender: "Male", age: 22, skills: ["Social Media", "Marketing"], photo: "volunteer7.jpeg", rating: 5 },
+            { name: "Shivam Agrahari", gender: "Male", age: 21, skills: ["Research", "Writing"], photo: "volunteer8.enc", rating: 5 },
+            { name: "Saurav Singh", gender: "Male", age: 21, skills: ["Research", "Writing"], photo: "volunteer9.enc", rating: 5 },
+            // ... add more volunteers with Indian names and gender as needed
+        ];
+
+        // Function to display volunteers
+        const displayVolunteers = () => {
+            const volunteerContainer = document.getElementById('volunteerContainer');
+            volunteers.forEach(volunteer => {
+                const volunteerCard = document.createElement('div');
+                volunteerCard.className = 'volunteer-card';
+                volunteerCard.innerHTML = `
+                    <img src="${volunteer.photo}" alt="${volunteer.name}">
+                    <h3><span class="volunteer-name">${volunteer.name}</span></h3> <!-- Volunteer name with hover effect -->
+                    <p>Gender: ${volunteer.gender}</p> <!-- Display Gender -->
+                    <p>Age: ${volunteer.age}</p>
+                    <p>Skills: ${volunteer.skills.join(', ')}</p>
+                    <div class="star-rating">
+                        ${'★'.repeat(volunteer.rating)}${'☆'.repeat(5 - volunteer.rating)} <!-- Display stars -->
+                    </div>
+                    <button class="connect-button" onclick="sendRequest()">Connect</button> <!-- Connect button -->
+                `;
+                volunteerContainer.appendChild(volunteerCard);
+            });
+        };
+
+        // Function to show popup
+        function sendRequest() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'block'; // Show the popup
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'none'; // Hide the popup
+        }
+
+        // Initial call to display volunteers
+        displayVolunteers();
+    </script>
+</body>
+</html>

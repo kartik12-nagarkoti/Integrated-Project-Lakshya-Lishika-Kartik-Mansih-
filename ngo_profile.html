@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO Profile</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .profile-h1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90px;
+            background-color: #016d6d;
+            color: white;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        .search-section {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+
+        .search-section input {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .back-home {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #016d6d;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #014f4f;
+            transform: scale(1.05);
+        }
+
+        .ngo-list {
+            margin: 0 auto;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .ngo-item {
+            background-color: #f0f8ff;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            animation: slideIn 0.5s ease;
+            text-align: center; /* Center the text */
+            transition: transform 0.3s, box-shadow 0.3s; /* Transition for hover effect */
+        }
+
+        .ngo-item:hover {
+            transform: scale(1.02); /* Scale effect on hover */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #016d6d;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Popup styles */
+        .popup {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            border: 2px solid #016d6d;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .popup h3 {
+            margin: 0;
+            color: #016d6d;
+        }
+
+        .popup button {
+            background-color: #016d6d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .popup button:hover {
+            background-color: #014f4f;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Slide-in animation */
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="profile-h1">
+        <h1>NGO Profile</h1>
+    </header>
+
+    <main>
+        <section class="search-section">
+            <input type="text" id="searchInput" placeholder="Search for NGOs..." onkeyup="filterNGOs()" />
+        </section>
+
+        <section class="back-home">
+            <a href="index.html" class="btn">Back to Home</a>
+        </section>
+
+        <section class="ngo-list" id="ngoList">
+            <h2 style="text-align:center;">Available NGOs</h2>
+            <div class="ngo-item" data-name="Helping Hands">
+                <h3>Helping Hands</h3>
+                <p><strong>Description:</strong> Helping Hands is a non-profit organization focused on providing education and healthcare to underprivileged children in rural areas.</p>
+                <p><strong>Location:</strong> New Delhi, India</p>
+                <button class="btn" onclick="sendRequest()">Connect with NGO</button>
+            </div>
+            <div class="ngo-item" data-name="Green Earth">
+                <h3>Green Earth</h3>
+                <p><strong>Description:</strong> Green Earth works towards environmental conservation and awareness, engaging communities in sustainable practices.</p>
+                <p><strong>Location:</strong> Mumbai, India</p>
+                <button class="btn" onclick="sendRequest()">Connect with NGO</button>
+            </div>
+            <div class="ngo-item" data-name="Food for All">
+                <h3>Food for All</h3>
+                <p><strong>Description:</strong> This organization is dedicated to eliminating hunger by distributing food to those in need through various programs.</p>
+                <p><strong>Location:</strong> Kolkata, India</p>
+                <button class="btn" onclick="sendRequest()">Connect with NGO</button>
+            </div>
+            <div class="ngo-item" data-name="Health for Everyone">
+                <h3>Health for Everyone</h3>
+                <p><strong>Description:</strong> Aimed at providing healthcare services to marginalized communities, promoting health awareness and accessibility.</p>
+                <p><strong>Location:</strong> Chennai, India</p>
+                <button class="btn" onclick="sendRequest()">Connect with NGO</button>
+            </div>
+            <div class="ngo-item" data-name="Safe Childhood">
+                <h3>Safe Childhood</h3>
+                <p><strong>Description:</strong> Focused on child protection, this NGO advocates for the rights and safety of children in vulnerable situations.</p>
+                <p><strong>Location:</strong> Bangalore, India</p>
+                <button class="btn" onclick="sendRequest()">Connect with NGO</button>
+            </div>
+            <div class="ngo-item" data-name="Women Empowerment">
+                <h3>Women Empowerment</h3>
+                <p><strong>Description:</strong> This organization empowers women through education, skill development, and advocacy for their rights.</p>
+                <p><strong>Location:</strong> Hyderabad, India</p>
+                <button class="btn" onclick="sendRequest()">Connect with NGO</button>
+            </div>
+            <div class="ngo-item" data-name="Clean Water Initiative">
+                <h3>Clean Water Initiative</h3>
+                <p><strong>Description:</strong> Works to provide access to clean and safe drinking water in underserved communities.</p>
+                <p><strong>Location:</strong> Ahmedabad, India</p>
+                <button class="btn" onclick="sendRequest()">Connect with NGO</button>
+            </div>
+            <div class="ngo-item" data-name="Skill India">
+                <h3>Skill India</h3>
+                <p><strong>Description:</strong> Focused on skill development and vocational training for youth to enhance employability.</p>
+                <p><strong>Location:</strong> Pune, India</p>
+                <button class="btn" onclick="sendRequest()">Connect with NGO</button>
+            </div>
+            <div class="ngo-item" data-name="Cultural Heritage">
+                <h3>Cultural Heritage</h3>
+                <p><strong>Description:</strong> Aims to preserve and promote India's rich cultural heritage through various initiatives and events.</p>
+                <p><strong>Location:</strong> Jaipur, India</p>
+                <button class="btn" onclick="sendRequest()">Connect with NGO</button>
+            </div>
+            <div class="ngo-item" data-name="Animal Welfare">
+                <h3>Animal Welfare</h3>
+                <p><strong>Description:</strong> Dedicated to the protection and welfare of animals through rescue, rehabilitation, and advocacy.</p>
+                <p><strong>Location:</strong> Delhi NCR, India</p>
+                <button class="btn" onclick="sendRequest()">Connect with NGO</button>
+            </div>
+            <div class="ngo-item" data-name="Education for All">
+                <h3>Education for All</h3>
+                <p><strong>Description:</strong> Committed to providing quality education to underprivileged children and promoting literacy.</p>
+                <p><strong>Location:</strong> Kolkata, India</p>
+                <button class="btn" onclick="sendRequest()">Connect with NGO</button>
+            </div>
+            <div class="ngo-item" data-name="Gender Equality">
+                <h3>Gender Equality</h3>
+                <p><strong>Description:</strong> Advocates for gender equality and women's rights through education and activism.</p>
+                <p><strong>Location:</strong> Chennai, India</p>
+                <button class="btn" onclick="sendRequest()">Connect with NGO</button>
+            </div>
+        </section>
+
+        <div class="popup" id="popup">
+            <h3>Connection Request Sent!</h3>
+            <p>Your connection request has been sent to the NGO.</p>
+            <button onclick="closePopup()">Close</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 NGO Profiles. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function filterNGOs() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toLowerCase();
+            const ngoList = document.getElementById('ngoList');
+            const ngoItems = ngoList.getElementsByClassName('ngo-item');
+
+            for (let i = 0; i < ngoItems.length; i++) {
+                const ngoItem = ngoItems[i];
+                const ngoName = ngoItem.getAttribute('data-name').toLowerCase();
+
+                if (ngoName.includes(filter)) {
+                    ngoItem.style.display = ''; // Show item
+                } else {
+                    ngoItem.style.display = 'none'; // Hide item
+                }
+            }
+        }
+
+        function sendRequest() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'block'; // Show popup
+        }
+
+        function closePopup() {
+            const popup = document.getElementById('popup');
+            popup.style.display = 'none'; // Hide popup
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa; /* Light teal background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0; /* Start with no opacity for fade-in */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        header {
+            background: #008080; /* Teal */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        marquee {
+            width: 100%;
+            background-color: #d1e7e5; /* Light background for marquee */
+            color: #005757; /* Dark teal text */
+            padding: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			 animation: marquee 15s linear infinite; 
+        }
+
+        form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 128, 128, 0.1); /* Soft teal shadow */
+            margin-top: 20px;
+            width: 350px;
+            opacity: 0; /* Start with no opacity for fade-in */
+            animation: formFadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 0.5s; /* Delay form fade-in */
+        }
+
+        @keyframes formFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #006666; /* Deep teal for labels */
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 90%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #008080;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #333;
+            background-color: #f0f8ff; /* Light cyan input background */
+            transition: transform 0.3s ease, border-color 0.3s ease; /* Add transition */
+        }
+
+        input:focus, textarea:focus {
+            border-color: #004d4d; /* Darker teal focus border */
+            outline: none;
+            transform: scale(1.02); /* Slightly grow input field on focus */
+        }
+
+        input[type="submit"] {
+            background-color: #008080; /* Teal button */
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition */
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #004d4d; /* Darker teal on hover */
+            transform: scale(1.05); /* Slightly grow button on hover */
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            color: #008080; /* Teal color for the back link */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            text-align: center; /* Center text in the back button */
+            width: 100%; /* Take full width for centering */
+        }
+
+        .btn:hover {
+            color: #004d4d; /* Darker teal on hover */
+            text-decoration: underline;
+        }
+
+        .back-container {
+            display: flex;
+            justify-content: center; /* Center the back button */
+            margin-top: 15px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Register as a Volunteer</h1>
+    </header>
+    
+    <marquee behavior="scroll" direction="left">
+        Join us in making a difference! Your support helps change lives!
+    </marquee>
+    
+    <form action="register_volunteer.php" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="skills">Skills:</label>
+        <textarea id="skills" name="skills" rows="4" placeholder="Enter your skills..." required></textarea>
+
+        <input type="submit" value="Register">
+        
+        <div class="back-container">
+            <a href="javascript:history.back()" class="btn">Back</a>
+        </div>
+    </form>
+</body>
+</html>

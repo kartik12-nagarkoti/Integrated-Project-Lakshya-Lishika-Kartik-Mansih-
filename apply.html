@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Opportunity</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif; /* Set a clean font */
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7; /* Light gray background */
+        }
+
+        header {
+            background-color: #016d6d; /* Teal background */
+            color: white; /* White text color */
+            text-align: center; /* Center text */
+            padding: 20px; /* Add padding */
+        }
+
+        h1 {
+            margin: 0; /* Remove default margin */
+            font-size: 2em; /* Increase font size */
+        }
+
+        .container {
+            max-width: 800px; /* Increase max width */
+            margin: 20px auto; /* Center container */
+            background: white; /* White background for the form */
+            padding: 20px; /* Add padding */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        form {
+            display: flex; /* Use flexbox for layout */
+            flex-direction: column; /* Stack items vertically */
+        }
+
+        label {
+            margin: 10px 0 5px; /* Spacing for labels */
+            font-weight: bold; /* Bold labels */
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            padding: 10px; /* Inner padding */
+            border: 1px solid #ccc; /* Border style */
+            border-radius: 5px; /* Rounded corners */
+            font-size: 16px; /* Font size */
+            width: 100%; /* Full width */
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        textarea {
+            resize: vertical; /* Allow vertical resize only */
+        }
+
+        button {
+            background-color: #016d6d; /* Teal button */
+            color: white; /* White text */
+            padding: 10px; /* Button padding */
+            border: none; /* No border */
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Pointer on hover */
+            font-size: 16px; /* Font size */
+            margin-top: 10px; /* Spacing above the button */
+            transition: background-color 0.3s; /* Transition for hover */
+        }
+
+        button:hover {
+            background-color: #015555; /* Darker teal on hover */
+        }
+
+        footer {
+            text-align: center; /* Center footer text */
+            padding: 10px; /* Footer padding */
+            background-color: #016d6d; /* Match header color */
+            color: white; /* White text */
+            position: relative; /* Relative positioning */
+            bottom: 0; /* Stick to bottom */
+            width: 100%; /* Full width */
+        }
+
+        .button-container {
+            display: flex; /* Use flexbox for layout */
+            justify-content: space-between; /* Space buttons evenly */
+            margin-top: 10px; /* Space above buttons */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Apply for Opportunity</h1>
+    </header>
+
+    <div class="container">
+        <form action="submit_application.php" method="POST">
+            <label for="opportunityName">Opportunity Name:</label>
+            <input type="text" id="opportunityName" name="opportunityName" readonly>
+
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="message">Cover Letter:</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+
+            <div class="button-container">
+                <button type="submit">Submit Application</button>
+                <button type="button" onclick="window.history.back()">Back</button> <!-- Back button -->
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Charity and Volunteer Network. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to get query parameter by name
+        function getQueryParam(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Set the opportunity name in the input field
+        document.getElementById('opportunityName').value = getQueryParam('opportunity');
+    </script>
+
+</body>
+</html>

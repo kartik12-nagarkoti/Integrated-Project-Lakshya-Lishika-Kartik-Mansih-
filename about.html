@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f9f9f9; /* Light background for a clean look */
+            color: #333;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #016d6d; /* Teal background for header */
+            color: white; /* White text color */
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center text horizontally */
+            height: 120px; /* Set height for the header */
+            padding: 10px 0; /* Add padding for better spacing */
+        }
+
+        header h1 {
+            margin-top: 45px;
+        }
+
+        /* Button styles */
+        .button-container {
+            display: flex;
+            justify-content: center; /* Center buttons */
+            margin-top: 10px; /* Space between the header text and the button */
+        }
+
+        .back-button {
+            background-color: #016d6d; /* Teal background */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px; /* Rounded corners */
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #015454; /* Darker teal on hover */
+        }
+
+        /* About Us section styles */
+        .about-container {
+            padding: 40px;
+            max-width: 1000px;
+            margin: auto;
+            background: white; /* White background for content area */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+            font-family: 'Arial', sans-serif; /* Modern font */
+        }
+
+        .section {
+            background-color: #f0f8ff; /* Light gray background for sections */
+            padding: 20px;
+            border-radius: 8px; /* Rounded corners for sections */
+            margin-bottom: 20px; /* Space between sections */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Light shadow */
+        }
+
+        h2 {
+            color: #016d6d;
+            font-size: 28px; /* Slightly smaller for a modern look */
+            margin-bottom: 10px; /* Reduced margin for a tighter look */
+        }
+
+        p {
+            font-size: 16px; /* Slightly smaller font size */
+            line-height: 1.8; /* More line spacing for better readability */
+            margin-bottom: 15px; /* Reduced margin for a cleaner look */
+        }
+
+        ul {
+            padding: 0; /* Remove default padding */
+            margin: 0; /* Remove default margin */
+            list-style-type: none; /* Remove default bullet points */
+        }
+
+        ul li {
+            background-color: #f0f8ff; /* Light background for list items */
+            border-radius: 8px; /* Rounded corners */
+            padding: 15px; /* Padding for the items */
+            margin: 10px 0; /* Space between items */
+            transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition for effects */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        ul li:hover {
+            transform: scale(1.05); /* Enlarge item on hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+        }
+
+        .about-button {
+            display: inline-block; /* Allow margin to work */
+            background-color: #016d6d; /* Teal background */
+            color: white;
+            padding: 12px 24px; /* Larger padding for button */
+            border: none;
+            border-radius: 5px;
+            font-size: 18px; /* Larger font size */
+            cursor: pointer;
+            text-decoration: none; /* Remove underline */
+            transition: background-color 0.3s;
+            margin: 0 10px; /* Space between buttons */
+        }
+
+        .about-button:hover {
+            background-color: #015c5c; /* Darker shade on hover */
+            transform: translateY(-2px);
+        }
+
+        /* Footer styles */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #016d6d; /* Match header color */
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>About Us</h1>
+    </header>
+
+    <div class="about-container">
+        <div class="button-container">
+            <button id="backButton" class="back-button" onclick="window.history.back()">Back</button>
+        </div>
+        <br>
+        <div class="section">
+            <h2>Who We Are</h2>
+            <p>At the <strong>NGO & Volunteer Network</strong>, we are passionate about connecting individuals with meaningful volunteer opportunities around the world. Our platform bridges the gap between NGOs and volunteers by offering a wide array of projects, causes, and job opportunities that create lasting social impact. From environmental conservation to education, healthcare, and more, our network empowers individuals to contribute to causes they care about.</p>
+        </div>
+
+        <div class="section">
+            <h2>Our Mission</h2>
+            <p>Our mission is to make it easier for people to get involved in charitable work and give back to their communities. We believe that everyone has the potential to make a difference, and we are dedicated to helping people find the perfect opportunity to apply their skills and passions to create real change in society.</p>
+        </div>
+    
+        <div class="section">
+            <h2>What We Offer</h2>
+            <p>We provide NGOs and volunteers with a platform to connect and collaborate. Our features include:</p>
+            <ul>
+                <li>Curated listings of volunteer opportunities across various sectors.</li>
+                <li>Direct connections with NGO teams and project leaders.</li>
+                <li>Opportunities to contribute both remotely and on-site across different regions.</li>
+                <li>Tools to track your volunteering hours and achievements.</li>
+            </ul>
+        </div>
+    
+        <div class="section">
+            <h2>Join Us</h2>
+            <p>Become part of a global movement dedicated to making a positive impact. Whether you're an individual looking to volunteer or an NGO seeking passionate people, our platform is the perfect place to connect.</p>
+            <div class="button-container">
+                <a href="opportunities.html" class="about-button">View Opportunities</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 NGO & Volunteer Network. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

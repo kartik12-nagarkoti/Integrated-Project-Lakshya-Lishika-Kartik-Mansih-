@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a Donation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e0f7fa; /* Light teal background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            opacity: 0; /* Start with no opacity for fade-in */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        header {
+            background: #008080; /* Teal */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .banner {
+            background-color: #009688; /* Light teal for the banner */
+            padding: 10px;
+            text-align: center;
+            color: white;
+            font-size: 1.5em;
+            font-weight: bold;
+            position: relative;
+            width: 100%;
+            margin-top: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        marquee {
+            width: 100%;
+            background-color: #009688; /* Light teal background for marquee */
+            color: white; /* White text for marquee */
+            padding: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 128, 128, 0.1); /* Soft teal shadow */
+            margin-top: 20px;
+            width: 450px;
+            opacity: 0; /* Start with no opacity for fade-in */
+            animation: formFadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 0.5s; /* Delay form fade-in */
+        }
+
+        @keyframes formFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #006666; /* Deep teal for labels */
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 90%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #008080;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #333;
+            background-color: #f0f8ff; /* Light cyan input background */
+            transition: transform 0.3s ease, border-color 0.3s ease; /* Add transition */
+        }
+
+        input:focus, textarea:focus {
+            border-color: #004d4d; /* Darker teal focus border */
+            outline: none;
+            transform: scale(1.02); /* Slightly grow input field on focus */
+        }
+
+        input[type="submit"] {
+            background-color: #008080; /* Teal button */
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition */
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #004d4d; /* Darker teal on hover */
+            transform: scale(1.05); /* Slightly grow button on hover */
+        }
+
+        .payment-methods {
+            margin: 15px 0; /* Space around payment options */
+        }
+
+        .payment-methods label {
+            background-color: #f0f8ff; /* Light cyan background for payment options */
+            padding: 10px;
+            border-radius: 5px;
+            display: block; /* Stack each label */
+            margin-bottom: 10px; /* Space between options */
+            cursor: pointer; /* Pointer cursor */
+            transition: background-color 0.3s ease; /* Smooth background transition */
+        }
+
+        .payment-methods label:hover {
+            background-color: #e0ffff; /* Change to a slightly darker cyan on hover */
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            color: #008080; /* Teal color for the back link */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            text-align: center; /* Center text in the back button */
+            width: 100%; /* Take full width for centering */
+        }
+
+        .btn:hover {
+            color: #004d4d; /* Darker teal on hover */
+            text-decoration: underline;
+        }
+
+        .back-container {
+            display: flex;
+            justify-content: center; /* Center the back button */
+            margin-top: 15px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Make a Donation</h1>
+    </header>
+    
+    <div class="banner">Help us make a difference!</div>
+    
+    <marquee behavior="scroll" direction="left">
+        Your support is crucial! Together we can change lives!
+    </marquee>
+    
+    <form action="process_donation.php" method="POST">
+        <label for="donor_name">Your Name:</label>
+        <input type="text" id="donor_name" name="donor_name" required>
+
+        <label for="donor_email">Your Email:</label>
+        <input type="email" id="donor_email" name="donor_email" required>
+
+        <label for="amount">Donation Amount:</label>
+        <input type="number" id="amount" name="amount" required min="1" placeholder="Enter amount in Indian Rupees">
+
+        <label for="message">Message (optional):</label>
+        <textarea id="message" name="message" rows="3" placeholder="Add a personal message..."></textarea>
+
+        <div class="payment-methods">
+            <h2>Select Payment Method</h2>
+            <label>
+                <input type="radio" name="payment_method" value="mastercard" required>
+                Mastercard
+            </label>
+            <label>
+                <input type="radio" name="payment_method" value="paypal">
+                PayPal
+            </label>
+            <label>
+                <input type="radio" name="payment_method" value="razorpay">
+                Razorpay
+            </label>
+            <label>
+                <input type="radio" name="payment_method" value="visa_card">
+                VisaCard
+            </label>
+            <label>
+                <input type="radio" name="payment_method" value="rupay_upi">
+                RuPay UPI
+            </label>
+        </div>
+
+        <input type="submit" value="Donate">
+        
+        <div class="back-container">
+            <a href="javascript:history.back()" class="btn">Back</a>
+        </div>
+    </form>
+</body>
+</html>

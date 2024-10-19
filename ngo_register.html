@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGO Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e0f7fa; /* Light teal background */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0; /* Start with no opacity for fade-in */
+            animation: fadeIn 1s forwards; /* Apply fade-in animation */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        header {
+            background: #008080; /* Teal */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .marquee {
+            width: 100%;
+            background-color: #d1e7e5; /* Light background for marquee */
+            color: #005757; /* Dark teal text */
+            padding: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            padding-left: 100%; /* Start the content off the right side */
+            animation: marquee 15s linear infinite; /* Apply the marquee animation */
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0); /* Start from the right */
+            }
+            100% {
+                transform: translateX(-100%); /* Move to the left */
+            }
+        }
+
+        form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 128, 128, 0.1); /* Soft teal shadow */
+            margin-top: 20px;
+            width: 350px;
+            opacity: 0; /* Start with no opacity for fade-in */
+            animation: formFadeIn 1s forwards; /* Apply fade-in animation */
+            animation-delay: 0.5s; /* Delay form fade-in */
+        }
+
+        @keyframes formFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            color: #006666; /* Deep teal for labels */
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 90%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 2px solid #008080;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #333;
+            background-color: #f0f8ff; /* Light cyan input background */
+            transition: transform 0.3s ease, border-color 0.3s ease; /* Add transition */
+        }
+
+        input:focus, textarea:focus {
+            border-color: #004d4d; /* Darker teal focus border */
+            outline: none;
+            transform: scale(1.02); /* Slightly grow input field on focus */
+        }
+
+        input[type="submit"] {
+            background-color: #008080; /* Teal button */
+            color: white;
+            padding: 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition */
+            width: 100%;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #004d4d; /* Darker teal on hover */
+            transform: scale(1.05); /* Slightly grow button on hover */
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            color: #008080; /* Teal color for the back link */
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .btn:hover {
+            color: #004d4d; /* Darker teal on hover */
+            text-decoration: underline;
+        }
+
+        .back-button {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Register as an NGO</h1>
+    </header>
+
+    <!-- Marquee section -->
+    <div class="marquee">
+        <div class="marquee-content">Join our community of changemakers. Register your NGO today!</div>
+    </div>
+
+    <form action="register_ngo.php" method="POST">
+        <label for="ngo_name">NGO Name:</label>
+        <input type="text" id="ngo_name" name="ngo_name" required>
+
+        <label for="contact_person">Contact Person:</label>
+        <input type="text" id="contact_person" name="contact_person" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="address">Address:</label>
+        <textarea id="address" name="address" required></textarea>
+
+        <input type="submit" value="Register">
+
+        <div class="back-button">
+            <a href="javascript:history.back()" class="btn">Back</a>
+        </div>
+    </form>
+</body>
+</html>
